@@ -1,0 +1,13 @@
+# Local-only artifacts (kept out of git)
+**/.env
+**/node_modules/
+toolverse-ai-backend/dist/
+toolverse-ai-backend/data/
+toolverse-ai-backend/vendor/
+toolverse-ai-backend/storage/
+toolverse-ai-backend/coverage/
+toolverse-ai-frontend/.next/
+toolverse-ai-frontend/out/
+*.log
+*.traineddata
+.DS_Store
