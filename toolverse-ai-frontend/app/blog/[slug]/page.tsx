@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BlogAPI } from "@/lib/api";
 import { BlogCard } from "@/components/BlogCard";
 import { ReadingArticle } from "@/components/ReadingArticle";
+import { AdSlot } from "@/components/ads";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const revalidate = 300;
@@ -69,6 +70,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         {post.author ?? "TOOLVERSE"} · {post.published_at ? new Date(post.published_at).toLocaleDateString() : ""}
       </p>
       <ReadingArticle post={post} />
+      <div className="mt-8">
+        <AdSlot placement="article-bottom" />
+      </div>
       {related.length > 0 && (
         <section className="mt-12" aria-label="Related articles">
           <h2 className="font-bold">Related articles</h2>

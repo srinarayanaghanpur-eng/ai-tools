@@ -21,10 +21,12 @@ export function Footer() {
         <nav aria-label="Tools">
           <h3 className="text-sm font-semibold">Tools</h3>
           <ul className="text-muted mt-3 space-y-2 text-sm">
-            <li><Link href="/tools?cat=ai" className="hover:text-current">AI tools</Link></li>
-            <li><Link href="/tools?cat=pdf" className="hover:text-current">PDF tools</Link></li>
-            <li><Link href="/tools?cat=image" className="hover:text-current">Image tools</Link></li>
-            <li><Link href="/tools?cat=developer" className="hover:text-current">Developer tools</Link></li>
+            <li><Link href="/categories/ai" className="hover:text-current">AI tools</Link></li>
+            <li><Link href="/categories/pdf" className="hover:text-current">PDF tools</Link></li>
+            <li><Link href="/categories/image" className="hover:text-current">Image tools</Link></li>
+            <li><Link href="/categories/developer" className="hover:text-current">Developer tools</Link></li>
+            <li><Link href="/categories/media" className="hover:text-current">Video & audio tools</Link></li>
+            <li><Link href="/categories/utilities" className="hover:text-current">Utilities</Link></li>
           </ul>
         </nav>
         <nav aria-label="Company">
@@ -41,6 +43,7 @@ export function Footer() {
             <li><Link href="/login" className="hover:text-current">Sign in</Link></li>
             <li><Link href="/register" className="hover:text-current">Create account</Link></li>
             <li><Link href="/forgot-password" className="hover:text-current">Reset password</Link></li>
+            <li><Link href="/privacy" className="hover:text-current">Privacy Policy</Link></li>
           </ul>
         </nav>
       </div>

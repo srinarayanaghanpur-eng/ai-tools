@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BlogAPI } from "@/lib/api";
 import { BlogCard } from "@/components/BlogCard";
+import { AdSlot } from "@/components/ads";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -41,6 +42,9 @@ export default async function BlogPage() {
           ))}
         </div>
       )}
+      <div className="mt-10">
+        <AdSlot placement="blog-top" />
+      </div>
     </div>
   );
 }
