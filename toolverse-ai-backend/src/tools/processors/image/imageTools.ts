@@ -122,7 +122,12 @@ export const backgroundRemove: Processor = async (ctx) => {
   const mimeType =
     ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : ext === '.webp' ? 'image/webp' : 'image/png';
   const blob = new Blob([new Uint8Array(buf)], { type: mimeType });
-  const outBlob: Blob = await mod.removeBackground(blob, {});
+  // BG_MODEL=small uses the ~40MB quantized model (fits 512MB hosts);
+  // medium is default quality. Configurable without code changes.
+  const model = ['small', 'medium'].includes(String(process.env.BG_MODEL ?? '').toLowerCase())
+    ? String(process.env.BG_MODEL).toLowerCase()
+    : 'medium';
+  const outBlob: Blob = await mod.removeBackground(blob, { model });
   const outBuf = Buffer.from(await outBlob.arrayBuffer());
   ctx.onProgress(90);
   const out = await tmpOut('.png');

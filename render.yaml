@@ -1,0 +1,43 @@
+# Render Blueprint for the TOOLVERSE AI backend.
+# In Render: New → Blueprint → select this repo. Then set the secret env vars
+# below in the dashboard (JWT_SECRET, SIGNED_URL_SECRET, AI keys, ADMIN_PASSWORD).
+services:
+  - type: web
+    name: toolverse-api
+    runtime: node
+    plan: free # bump to starter+ for production traffic (and 1GB+ RAM if using background-remover)
+    rootDir: toolverse-ai-backend
+    buildCommand: npm ci && npm run build
+    startCommand: node dist/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATABASE_PATH
+        value: ./data/toolverse.sqlite
+      - key: STORAGE_PROVIDER
+        value: local
+      - key: BG_MODEL
+        value: small # free-tier safe; use medium with 1GB+ RAM
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SIGNED_URL_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://tools-agi.netlify.app
+      - key: API_BASE_URL
+        value: https://toolverse-api.onrender.com # ← change to your real backend URL
+      - key: AI_PROVIDER
+        value: openai
+      - key: OPENAI_API_KEY
+        sync: false # set in dashboard
+      - key: ADMIN_EMAIL
+        value: admin@toolverse.ai
+      - key: ADMIN_PASSWORD
+        sync: false # set in dashboard
+    # NOTE: free instances have ephemeral disks — the SQLite DB resets on
+    # redeploy/restart. For production persistence add a Render Disk mounted
+    # at /opt/render/project/src/toolverse-ai-backend/data and set
+    # DATABASE_PATH + STORAGE_LOCAL_ROOT under it.

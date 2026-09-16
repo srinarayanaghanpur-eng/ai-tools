@@ -26,6 +26,14 @@ npm run dev
 
 Each app has its own README with full docs (`toolverse-ai-backend/README.md`, `docs/`, `toolverse-ai-frontend/README.md`).
 
+## Deploy
+
+- **Frontend → Netlify:** import this repo, base directory `toolverse-ai-frontend`
+  (see `netlify.toml`), env: `NEXT_PUBLIC_SITE_URL=https://tools-agi.netlify.app`,
+  `NEXT_PUBLIC_API_URL=<public backend URL>`.
+- **Backend → Render:** use `render.yaml` (Blueprint), then set `CORS_ORIGINS` to the
+  Netlify domain and add a disk for `./data` in production.
+
 ## Verified state
 
 - Backend: 44 tools registered, 29/34 non-AI tools verified end-to-end via live API (COMPLETED + downloads), `npm test` 28/28 green. The 5 AI tools require provider API keys.

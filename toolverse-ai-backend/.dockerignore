@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+dist
+data
+storage
+vendor
+coverage
+.git
+.gitignore
+.env
+*.log
+*.sqlite*
+*.traineddata
+tests
