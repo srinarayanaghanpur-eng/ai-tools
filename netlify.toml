@@ -9,8 +9,10 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Next.js Runtime (SSR/ISR, route handlers, redirects) is applied automatically
-# to Next.js apps — no plugin install needed.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Next.js Runtime handles SSR/ISR — publish stays .next, functions are generated automatically.
 
 # Long-cache immutable Next.js assets.
 [[headers]]
