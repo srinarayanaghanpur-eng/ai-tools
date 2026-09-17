@@ -1,5 +1,6 @@
 # Local-only artifacts (kept out of git)
 **/.env
+.netlify/
 **/node_modules/
 toolverse-ai-backend/dist/
 toolverse-ai-backend/data/
